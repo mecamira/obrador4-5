@@ -17,12 +17,12 @@
       seguridad según corresponda).
    ---------------------------------------------------------- */
 const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",            // Clave de API de tu proyecto Firebase
-  authDomain:        "YOUR_AUTH_DOMAIN",        // p. ej. mi-proyecto.firebaseapp.com
-  projectId:         "YOUR_PROJECT_ID",         // Identificador único de tu proyecto
-  storageBucket:     "YOUR_STORAGE_BUCKET",     // p. ej. mi-proyecto.appspot.com
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",// ID de remitente para notificaciones
-  appId:             "YOUR_APP_ID"              // ID de la app web registrada
+  apiKey:            "AIzaSyBMh4rkqpn4XK50HIY-hR_E3zLpvQqPU0Q",
+  authDomain:        "antolin-93e0c.firebaseapp.com",
+  projectId:         "antolin-93e0c",
+  storageBucket:     "antolin-93e0c.firebasestorage.app",
+  messagingSenderId: "291188733594",
+  appId:             "1:291188733594:web:e2b8313b9fced7abc75123"
 };
 
 /* ----------------------------------------------------------
