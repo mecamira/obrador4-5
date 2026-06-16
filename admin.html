@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Playa de San Antolín</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- PANTALLA DE LOGIN -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-card__icon">🏖️</div>
+      <h1 class="login-card__title">Panel de Administración</h1>
+      <p class="login-card__subtitle">Playa de San Antolín</p>
+      <form id="login-form" novalidate>
+        <div class="login-field">
+          <label for="pwd" class="login-field__label">Contraseña</label>
+          <input
+            type="password"
+            id="pwd"
+            class="login-field__input"
+            placeholder="Introduce la contraseña"
+            autocomplete="current-password"
+            required
+          />
+          <span id="login-error" class="login-field__error" role="alert"></span>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Acceder</button>
+      </form>
+      <a href="index.html" class="login-card__back">← Volver a la web</a>
+    </div>
+  </div>
+
+  <!-- PANEL PRINCIPAL (oculto hasta login) -->
+  <div id="admin-panel" class="admin-panel" hidden>
+
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <span class="admin-header__icon">🏖️</span>
+        <div>
+          <h1 class="admin-header__title">Panel de Resultados</h1>
+          <p class="admin-header__subtitle">Playa de San Antolín · Llanes, Asturias</p>
+        </div>
+      </div>
+      <div class="admin-header__right">
+        <button id="refresh-btn" class="btn btn--outline">↻ Actualizar</button>
+        <button id="logout-btn" class="btn btn--ghost">Salir</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- KPIs -->
+      <section class="kpis" aria-label="Indicadores clave">
+        <div class="kpi-card">
+          <span class="kpi-card__icon">📋</span>
+          <p class="kpi-card__label">Total respuestas</p>
+          <p class="kpi-card__value" id="kpi-total">—</p>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card__icon">⭐</span>
+          <p class="kpi-card__label">Valoración media</p>
+          <p class="kpi-card__value" id="kpi-avg">—</p>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card__icon">✅</span>
+          <p class="kpi-card__label">Han visitado la playa</p>
+          <p class="kpi-card__value" id="kpi-visited">—</p>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card__icon">💬</span>
+          <p class="kpi-card__label">Con comentario</p>
+          <p class="kpi-card__value" id="kpi-comments">—</p>
+        </div>
+      </section>
+
+      <!-- GRÁFICOS fila 1 -->
+      <div class="charts-row">
+        <div class="chart-card chart-card--half">
+          <h2 class="chart-card__title">¿Han visitado la playa?</h2>
+          <div class="chart-wrap chart-wrap--donut">
+            <canvas id="chart-visited" aria-label="Gráfico de visitas"></canvas>
+          </div>
+        </div>
+        <div class="chart-card chart-card--half">
+          <h2 class="chart-card__title">Distribución de valoraciones</h2>
+          <div class="chart-wrap">
+            <canvas id="chart-stars" aria-label="Gráfico de estrellas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICOS fila 2 -->
+      <div class="charts-row">
+        <div class="chart-card chart-card--full">
+          <h2 class="chart-card__title">¿Qué atrae más a los visitantes?</h2>
+          <div class="chart-wrap chart-wrap--bar">
+            <canvas id="chart-atractivo" aria-label="Gráfico de atractivos"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICOS fila 3 -->
+      <div class="charts-row">
+        <div class="chart-card chart-card--full">
+          <h2 class="chart-card__title">Valoraciones a lo largo del tiempo</h2>
+          <div class="chart-wrap chart-wrap--line">
+            <canvas id="chart-timeline" aria-label="Gráfico de evolución temporal"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMENTARIOS RECIENTES -->
+      <section class="comments-section">
+        <h2 class="chart-card__title">Comentarios recientes</h2>
+        <div id="comments-list" class="comments-list">
+          <p class="comments-empty">Cargando comentarios…</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="admin-footer">
+      <p>Panel privado · Playa de San Antolín &copy; 2026</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
